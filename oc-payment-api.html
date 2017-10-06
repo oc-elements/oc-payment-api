@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`oc-payment-api`
+Element for consuming the payment API
+
+@demo demo/index.html
+-->
+
+<dom-module id="oc-payment-api">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'oc-payment-api',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'oc-payment-api',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
