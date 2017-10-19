@@ -1,6 +1,6 @@
 # \<oc-payment-api\>
 
-Element for consuming the payment API
+Ordercloud API for payments
 
 ## Install the Polymer-CLI
 

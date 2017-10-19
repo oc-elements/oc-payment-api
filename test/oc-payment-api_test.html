@@ -12,19 +12,41 @@
     <link rel="import" href="../oc-payment-api.html">
   </head>
   <body>
-    <test-fixture id="basic">
+
+    <test-fixture id="BasicTestFixture">
       <template>
         <oc-payment-api></oc-payment-api>
       </template>
     </test-fixture>
 
+    <test-fixture id="ChangedPropertyTestFixture">
+      <template>
+        <oc-payment-api prop1="new-prop1"></oc-payment-api>
+      </template>
+    </test-fixture>
+
     <script>
-      suite('oc-payment-api', function() {
-        test('instantiating the element works', function() {
-          var element = fixture('basic');
-          assert.equal(element.is, 'oc-payment-api');
+      suite('oc-payment-api', () => {
+
+        test('instantiating the element with default properties works', () => {
+          const element = fixture('BasicTestFixture');
+          assert.equal(element.prop1, 'oc-payment-api');
+          const elementShadowRoot = element.shadowRoot;
+          const elementHeader = elementShadowRoot.querySelector('h2');
+          assert.equal(elementHeader.innerHTML, 'Hello oc-payment-api!');
         });
+
+        test('setting a property on the element works', () => {
+          // Create a test fixture
+          const element = fixture('ChangedPropertyTestFixture');
+          assert.equal(element.prop1, 'new-prop1');
+          const elementShadowRoot = element.shadowRoot;
+          const elementHeader = elementShadowRoot.querySelector('h2');
+          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        });
+
       });
     </script>
+
   </body>
 </html>
