@@ -24,10 +24,13 @@
       /**
        * Make flash payment
        *
+       * @param paymentData.fromAccountId the account ot pay from
+       * @param paymentData.ammount the ammount to pay in Rands
+       *
        * @return {Promise}
        */
-      makeFlashPayment(organisationId, paymentData) {
-          this.$.makeFlashPayment.url = this._generateUrl('payments/pay/organisation/'+ organisationId + '/flash');
+      makePayment(organisationId, paymentData) {
+          this.$.makeFlashPayment.url = this._generateUrl('payments/pay/organisation/'+ organisationId);
           this.$.makeFlashPayment.method = "POST";
           this.$.makeFlashPayment.contentType = "application/json";
           this.$.makeFlashPayment.body = paymentData;
@@ -37,10 +40,12 @@
       /**
        * Flash confirmation OTP
        *
+       * @param paymentData.otp the otp to confirm on the transaction
+       *
        * @return {Promise}
        */
-      confirmFlashPayment(organisationId, paymentData) {
-          this.$.confirmFlashPayment.url = this._generateUrl('payments/pay/organisation/'+ organisationId + '/flash/otp');
+      confirmPayment(paymentId, paymentData) {
+          this.$.confirmFlashPayment.url = this._generateUrl('payments/' + paymentId +'/confirm');
           this.$.confirmFlashPayment.method = "POST";
           this.$.confirmFlashPayment.contentType = "application/json";
           this.$.confirmFlashPayment.body = paymentData;
