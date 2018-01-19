@@ -29,8 +29,8 @@
        *
        * @return {Promise}
        */
-      makePayment(organisationId, paymentData) {
-          this.$.makeFlashPayment.url = this._generateUrl('payments/pay/organisation/'+ organisationId);
+      makePayment(paymentData) {
+          this.$.makeFlashPayment.url = this._generateUrl('transactions/payment');
           this.$.makeFlashPayment.method = "POST";
           this.$.makeFlashPayment.contentType = "application/json";
           this.$.makeFlashPayment.body = paymentData;
@@ -45,7 +45,7 @@
        * @return {Promise}
        */
       confirmPayment(paymentId, paymentData) {
-          this.$.confirmFlashPayment.url = this._generateUrl('payments/' + paymentId +'/confirm');
+          this.$.confirmFlashPayment.url = this._generateUrl('transactions/' + paymentId +'/confirm');
           this.$.confirmFlashPayment.method = "POST";
           this.$.confirmFlashPayment.contentType = "application/json";
           this.$.confirmFlashPayment.body = paymentData;
